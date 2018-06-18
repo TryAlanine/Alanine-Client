@@ -1,14 +1,50 @@
 const path = require('path');
 
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(['dist']),
+    new UglifyJsWebpackPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      uglifyOptions: {
+        output: {
+          comments: false,
+        },
+      },
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'alanine.css',
+    }),
+    new OptimizeCssAssetsWebpackPlugin({}),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
+  },
   output: {
-    filename: 'bundle.js',
+    filename: 'alanine.js',
     path: path.resolve(__dirname, 'dist'),
+    library: 'Alanine',
+    libraryTarget: 'umd',
+    libraryExport: 'default',
+    umdNamedDefine: true,
   },
 };
