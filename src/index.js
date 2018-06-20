@@ -17,5 +17,5 @@ init:
 request meta data ->
 construct dom ->
 bind event ->
-mout dom
+mount dom
 */
