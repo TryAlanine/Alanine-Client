@@ -1,8 +1,8 @@
 import { el, text } from 'redom';
 
-export default function constructInfoDOM(metadata) {
+export default function constructInfoDOM(metaData) {
   return el('div', [
-    el('span', metadata.count),
+    el('span', metaData.count),
     text(' 评论'),
   ]);
 }

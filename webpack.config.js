@@ -47,4 +47,9 @@ module.exports = {
     libraryExport: 'default',
     umdNamedDefine: true,
   },
+  resolve: {
+    alias: {
+      '@': path.resolve('src'),
+    },
+  },
 };
