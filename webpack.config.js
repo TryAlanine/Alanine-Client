@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -26,6 +27,9 @@ module.exports = {
       filename: 'alanine.css',
     }),
     new OptimizeCssAssetsWebpackPlugin({}),
+    new HtmlWebpackPlugin({
+      template: 'alanine.html',
+    }),
   ],
   module: {
     rules: [
@@ -51,5 +55,8 @@ module.exports = {
     alias: {
       '@': path.resolve('src'),
     },
+  },
+  devServer: {
+    contentBase: './dist',
   },
 };
