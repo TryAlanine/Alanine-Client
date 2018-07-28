@@ -5,7 +5,7 @@ import constructEditorDOM from './editor';
 import constructControllerDOM from './controller';
 
 export default function constructAlanineDOM(metaData) {
-  return el('div', [
+  return el('div.alanine-main', [
     constructHeaderDOM(metaData),
     constructEditorDOM(metaData),
     constructControllerDOM(metaData),
