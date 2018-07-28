@@ -25,7 +25,7 @@ function constrcutCardDOM(cardData) {
     el('span', cardData.time),
     el('span', '回复'),
   ]);
-  return el('li', [
+  return el(`li.alanine-card#${cardData.id}`, [
     gravatar,
     el('section', [
       header,
