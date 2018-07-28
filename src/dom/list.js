@@ -4,21 +4,23 @@ import getGarvatarImg from '@/utility/gravatar';
 
 /*
 cardData {
-  gravatarEmail,
+  email,
   nickName,
-  browser,
-  system,
+  ua {
+    browser,
+    os,
+  },
   content,
-  time
+  time,
 }
 */
 
 function constrcutCardDOM(cardData) {
-  const gravatar = getGarvatarImg(cardData.gravatarEmail);
+  const gravatar = getGarvatarImg(cardData.email);
   const header = el('div', [
     el('span', cardData.nickName),
-    el('span', cardData.browser),
-    el('span', cardData.system),
+    el('span', cardData.ua.browser),
+    el('span', cardData.ua.os),
   ]);
   const content = el('div', el('p', cardData.content));
   const footer = el('div', [
@@ -35,6 +37,6 @@ function constrcutCardDOM(cardData) {
   ]);
 }
 
-export default function constructListDOM(metaData) {
-  return el('ul', metaData.comments.map(constrcutCardDOM));
+export default function constructListDOM(data) {
+  return el('ul', data.comments.map(constrcutCardDOM));
 }

@@ -5,11 +5,11 @@ import constructInfoDOM from './info';
 import constructListDOM from './list';
 import constructFooterDOM from './footer';
 
-export default function constructDOM(metaData) {
+export default function constructDOM(data) {
   return el('div.alanine-wrapper', [
-    constructMainDOM(metaData),
-    constructInfoDOM(metaData),
-    constructListDOM(metaData),
-    constructFooterDOM(metaData),
+    constructMainDOM(data),
+    constructInfoDOM(data),
+    constructListDOM(data),
+    constructFooterDOM(data),
   ]);
 }
