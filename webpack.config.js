@@ -3,26 +3,27 @@ const path = require('path');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webapck = require('webpack');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.js',
   plugins: [
     // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(['dist']),
-    new UglifyJsWebpackPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true,
-      uglifyOptions: {
-        output: {
-          comments: false,
-        },
-      },
-    }),
+    // new UglifyJsWebpackPlugin({
+    //   cache: true,
+    //   parallel: true,
+    //   sourceMap: true,
+    //   uglifyOptions: {
+    //     output: {
+    //       comments: false,
+    //     },
+    //   },
+    // }),
     new MiniCssExtractPlugin({
       filename: 'alanine.css',
     }),
@@ -30,6 +31,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'alanine.html',
     }),
+    new webapck.HotModuleReplacementPlugin(),
+    new webapck.NamedModulesPlugin(),
   ],
   module: {
     rules: [
@@ -58,5 +61,10 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
+    hot: true,
+    compress: true,
+    clientLogLevel: 'warning',
+    overlay: { warnings: false, errors: true },
   },
+  devtool: '#source-map',
 };
