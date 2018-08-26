@@ -1,28 +1,31 @@
 import { el } from 'redom';
 
-import getGarvatarImg from '@/utility/gravatar';
+import getGarvatarImg from '@/utils/gravatar';
 
 /*
 cardData {
+  id,
   email,
-  nickName,
+  usernaem,
   ua {
     browser,
     os,
   },
   content,
   time,
+  isUpdated,
 }
 */
 
 function constrcutCardDOM(cardData) {
   const gravatar = getGarvatarImg(cardData.email);
   const header = el('div', [
-    el('span', cardData.nickName),
+    el('span', cardData.username),
     el('span', cardData.ua.browser),
     el('span', cardData.ua.os),
   ]);
-  const content = el('div', el('p', cardData.content));
+  const content = el('div');
+  content.innerHTML = cardData.content;
   const footer = el('div', [
     el('span', cardData.time),
     el('span', '回复'),
@@ -37,6 +40,6 @@ function constrcutCardDOM(cardData) {
   ]);
 }
 
-export default function constructListDOM(data) {
-  return el('ul', data.comments.map(constrcutCardDOM));
+export default function constructListDOM(list) {
+  return el('ul', list.map(constrcutCardDOM));
 }

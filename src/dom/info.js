@@ -1,8 +1,8 @@
 import { el, text } from 'redom';
 
-export default function constructInfoDOM(data) {
+export default function constructInfoDOM(commentsCount) {
   return el('div', [
-    el('span', data.count),
+    el('span', commentsCount),
     text(' 评论'),
   ]);
 }

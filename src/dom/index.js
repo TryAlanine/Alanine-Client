@@ -8,8 +8,8 @@ import constructFooterDOM from './footer';
 export default function constructDOM(data) {
   return el('div.alanine-wrapper', [
     constructMainDOM(data),
-    constructInfoDOM(data),
-    constructListDOM(data),
+    constructInfoDOM(data.comments.count),
+    constructListDOM(data.comments.list),
     constructFooterDOM(data),
   ]);
 }
