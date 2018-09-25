@@ -6,7 +6,7 @@ import constructListDOM from './list';
 import constructFooterDOM from './footer';
 
 export default function constructDOM(data) {
-  return el('div.alanine-wrapper', [
+  return el('div.alanine', [
     constructMainDOM(data),
     constructInfoDOM(data.comments.count),
     constructListDOM(data.comments.list),

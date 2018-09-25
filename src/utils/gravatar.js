@@ -13,5 +13,5 @@ export default function getGravatarImg(email, cdn, defaultImg) {
     url = `${url}&d=${encodeURI(defaultImg)}`;
   }
   // create img element and return
-  return el('img', { src: url });
+  return el('img.alanine-avatar', { src: url });
 }

@@ -40,7 +40,7 @@ export default class Alanine {
           {
             id: 'ovubasojfpuwbjvkj',
             email: 'leaf3rx@gmail.com',
-            username: 'Lawrence YE',
+            username: 'Lawrence Ye',
             ua: {
               browser: 'Safari',
               os: 'OS X',
@@ -51,15 +51,17 @@ export default class Alanine {
           }
         ],
         count: 2,
-      }
+      },
+      placeholder: 'Type something..',
+      version: '0.0.0',
     };
     this.init();
   }
 
   async init() {
-    await this.fetchConfig();
-    await this.fetchPostInfo();
-    await this.fetchComments();
+    // await this.fetchConfig();
+    // await this.fetchPostInfo();
+    // await this.fetchComments();
     if (this.options.el) {
       this.mount(this.options.el);
     }
@@ -104,3 +106,5 @@ construct dom ->
 bind event ->
 mount dom
 */
+
+let x = new Alanine({server:'http://baidu.com/', el:'#i'});
